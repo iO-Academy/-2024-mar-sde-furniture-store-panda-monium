@@ -1,16 +1,12 @@
 <?php
-
-require_once 'src/Factory/Factory.php';
+require_once 'src/Services/CategoryDisplayService.php';
 require_once 'src/Models/CategoryModel.php';
+require_once 'src/Factory/furnitureDatabaseConnector.php';
 require_once 'src/Entities/CategoryEntity.php';
-
-
-$db = Factory::connect();
+$db = furnitureDatabaseConnector::connect();
 $categories = CategoryModel::getCategories($db);
-
-
+$categoryDisplayService = new CategoryDisplayService();
 ?>
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -30,14 +26,12 @@ $categories = CategoryModel::getCategories($db);
         <section class="container mx-auto md:w-2/3 grid md:grid-cols-4 gap-5 mt-10">
            <?php
                 foreach ($categories as $category) {
-                    echo $category->displayCategory();
+                   echo $categoryDisplayService->displayCategory($category);
                 }
            ?>
-
         </section>
         <footer class="container mx-auto md:w-2/3 border-t mt-10 pt-5">
             <p>© Copyright iO Academy 2022</p>
         </footer>
-
     </body>
 </html>
