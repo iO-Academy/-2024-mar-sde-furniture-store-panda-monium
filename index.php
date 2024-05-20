@@ -4,10 +4,11 @@ require_once 'src/Factory/Factory.php';
 require_once 'src/Models/CategoryModel.php';
 
 
+
 $db = Factory::connect();
 $products = CategoryModel::getCategories($db);
 
-
+var_dump($products)
 ?>
 
 <!doctype html>
