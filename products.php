@@ -2,10 +2,17 @@
 require_once 'src/Factory/furnitureDatabaseConnector.php';
 require_once 'src/Models/ProductModel.php';
 
-    $db = furnitureDatabaseConnector::connect();
-    $products = ProductModel::getProducts($db);
-
-    var_dump($products);
+$db = furnitureDatabaseConnector::connect();
+define('NUM_OF_CATEGORIES', 11);
+$id = $_GET["id"];
+if (!is_numeric($id) || $id > NUM_OF_CATEGORIES || $id < 1) {
+    echo '<h1>Invalid id number</h1>
+            <a href="index.php"><button>Home</button></a>';
+    return;
+} else {
+    $id = intval($id);
+}
+    $products = ProductModel::getProducts($db, $id);
 ?>
 
 <!DOCTYPE html>
