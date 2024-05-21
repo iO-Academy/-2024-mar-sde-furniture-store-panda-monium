@@ -1,6 +1,10 @@
 <?php
-require_once 'src/Factory/furnitureDatabaseConnector.php';
+require_once 'src/Models/CategoryModel.php';
+
+require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
+require_once 'src/Factory/furnitureDatabaseConnector.php';
+require_once 'src/Entities/ProductsEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
 define('NUM_OF_CATEGORIES', 11);
@@ -13,6 +17,7 @@ if (!is_numeric($id) || $id > NUM_OF_CATEGORIES || $id < 1) {
     $id = intval($id);
 }
     $products = ProductModel::getProducts($db, $id);
+    $category = CategoryModel::getCategoryTitle($db, 1);
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +34,7 @@ if (!is_numeric($id) || $id > NUM_OF_CATEGORIES || $id < 1) {
 </nav>
 
 <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
-    <h1 class="text-5xl mb-2">Category: Chair</h1>
+   <h1 class="text-5xl mb-2">Category: <?php echo $category->getName() ?>
     <p>For more information about any of the below products, click on the more button.</p>
 </header>
 
@@ -39,13 +44,12 @@ if (!is_numeric($id) || $id > NUM_OF_CATEGORIES || $id < 1) {
 </div>
 
 <section class="container mx-auto md:w-2/3 grid md:grid-cols-4 gap-5 mt-5">
-    <div class="bg-slate-100 p-5">
-        <div class="flex justify-between items-center">
-            <h3 class="text-2xl">Price: £27.62</h3>
-            <span class="bg-teal-500 text-2xl px-2 py-1 rounded">54</span>
-        </div>
-        <p>Color: Yellow</p>
-    </div>
+    <?php
+        foreach ($products as $product) {
+            echo ProductsDisplayService::displayProducts($product);
+        }
+
+    ?>
 
 </section>
 
