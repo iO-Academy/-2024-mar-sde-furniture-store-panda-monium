@@ -1,5 +1,11 @@
 <?php
+require_once 'src/Factory/furnitureDatabaseConnector.php';
+require_once 'src/Models/ProductModel.php';
 
+    $db = furnitureDatabaseConnector::connect();
+    $products = ProductModel::getProducts($db);
+
+    var_dump($products);
 ?>
 
 <!DOCTYPE html>
