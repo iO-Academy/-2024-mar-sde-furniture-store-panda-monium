@@ -15,4 +15,9 @@ class CategoryEntity
     {
         return $this->stockTotal;
     }
+
+    public function getId()
+    {
+        return $this->id;
+    }
 }
