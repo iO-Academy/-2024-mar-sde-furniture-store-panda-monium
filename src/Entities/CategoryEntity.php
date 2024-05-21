@@ -6,12 +6,12 @@ class CategoryEntity
     private int $stockTotal;
     private int $id;
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getStockTotal()
+    public function getStockTotal(): int
     {
         return $this->stockTotal;
     }

@@ -7,10 +7,10 @@ use PHPUnit\Framework\TestCase;
 
 class TestCategoryDisplayService extends TestCase
 {
-    public function testDisplayCategory() {
+    public function testDisplayCategory_Success() {
         $categoryMock = $this->createMock(CategoryEntity::class);
         $categoryMock->method('getName')->willReturn('test');
-        $categoryMock->method('getStockTotal')->willReturn('100');
+        $categoryMock->method('getStockTotal')->willReturn(100);
         $result = CategoryDisplayService::displayCategory($categoryMock);
         $expectedResult = '<div class="flex justify-between items-center bg-slate-100 p-5">
                         <h3 class="text-2xl">test</h3>
@@ -19,4 +19,9 @@ class TestCategoryDisplayService extends TestCase
         $this->assertSame($result, $expectedResult);
     }
 
+    public function testDisplayCategory_Malformed()
+    {
+        $this->expectException(TypeError::class);
+        CategoryDisplayService::displayCategory('dave');
+    }
 }
