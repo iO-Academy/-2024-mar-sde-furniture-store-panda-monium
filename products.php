@@ -8,7 +8,7 @@ require_once 'src/Entities/ProductsEntity.php';
 $db = furnitureDatabaseConnector::connect();
 define('NUM_OF_CATEGORIES', 11);
 $id = $_GET["id"];
-if (!is_numeric($id) || $id > NUM_OF_CATEGORIES || $id < 1) {
+if (!isset($id) || !is_numeric($id) || $id > NUM_OF_CATEGORIES || $id < 1) {
     echo '<h1>Invalid id number</h1>
             <a href="index.php"><button>Home</button></a>';
     return;

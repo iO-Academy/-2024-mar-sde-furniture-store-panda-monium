@@ -13,4 +13,8 @@ class CategoryEntity
     {
         return $this->stockTotal;
     }
+    public function getId(): int
+    {
+      return $this->id;
+    }
 }
