@@ -18,7 +18,6 @@ class CategoryModel
     }
     public static function getCategoryTitle($db, $id)
     {
-        $id = $_GET["id"];
         $sql = 'SELECT `categories`.`name` FROM `categories` JOIN `products`
         ON `products`.`category_id` = `categories`.`id` WHERE `category_id` =' . $id .';';
         $query = $db->prepare($sql);

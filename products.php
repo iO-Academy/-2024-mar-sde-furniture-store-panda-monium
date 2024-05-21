@@ -1,6 +1,6 @@
 <?php
 require_once 'src/Models/CategoryModel.php';
-require_once 'src/Services/CategoryNameService.php';
+
 require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
 require_once 'src/Factory/furnitureDatabaseConnector.php';
