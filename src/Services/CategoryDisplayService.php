@@ -1,13 +1,7 @@
 <?php
-
-require_once 'src/Entities/CategoryEntity.php';
-
-$categoryEntity = new CategoryEntity();
-
 class CategoryDisplayService
 {
-
-    public static function displayCategory($categoryEntity): string
+    public static function displayCategory(CategoryEntity $categoryEntity): string
         {
             return '<div class="flex justify-between items-center bg-slate-100 p-5">
                         <h3 class="text-2xl">' . $categoryEntity->getName() . '</h3>
