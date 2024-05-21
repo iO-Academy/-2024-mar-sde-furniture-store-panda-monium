@@ -2,9 +2,8 @@
 
 class CategoryNameService
 {
-    public static function displayCategoryName(ProductsEntity $productEntity): string
+    public static function displayCategoryName(CategoryEntity $categoryEntity): string
     {
-        return
-        ProductEntity::getName();
+        return '<span>' . CategoryEntity::getName() . '</span>';
     }
 }

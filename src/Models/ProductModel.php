@@ -13,4 +13,5 @@ public static function getProducts(PDO $db)
 }
 
 
+
 }
