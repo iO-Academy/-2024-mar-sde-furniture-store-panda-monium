@@ -1,5 +1,11 @@
 <?php
+require_once 'src/Services/ProductsDisplayService.php';
+require_once 'src/Models/ProductModel.php';
+require_once 'src/Factory/furnitureDatabaseConnector.php';
+require_once 'src/Entities/ProductsEntity.php';
 
+$db = furnitureDatabaseConnector::connect();
+$products =
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +32,12 @@
 </div>
 
 <section class="container mx-auto md:w-2/3 grid md:grid-cols-4 gap-5 mt-5">
-    <div class="bg-slate-100 p-5">
-        <div class="flex justify-between items-center">
-            <h3 class="text-2xl">Price: £27.62</h3>
-            <span class="bg-teal-500 text-2xl px-2 py-1 rounded">54</span>
-        </div>
-        <p>Color: Yellow</p>
-    </div>
+    <?php
+        foreach ($products as $product) {
+            echo ProductDisplayService::displayProducts($products);
+        }
+
+    ?>
 
 </section>
 
