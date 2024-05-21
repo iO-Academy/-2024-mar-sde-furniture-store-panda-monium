@@ -17,7 +17,7 @@ if (!is_numeric($id) || $id > NUM_OF_CATEGORIES || $id < 1) {
     $id = intval($id);
 }
     $products = ProductModel::getProducts($db, $id);
-    $category = CategoryModel::getCategoryTitle($db, 1);
+    $category = CategoryModel::getCategoryTitle($db, $id);
 ?>
 
 <!DOCTYPE html>

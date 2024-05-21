@@ -19,10 +19,10 @@ class CategoryModel
     public static function getCategoryTitle($db, $id)
     {
         $sql = 'SELECT `categories`.`name` FROM `categories` JOIN `products`
-        ON `products`.`category_id` = `categories`.`id` WHERE `category_id` =' . $id .';';
+        ON `products`.`category_id` = `categories`.`id` WHERE `category_id` = :id;';
         $query = $db->prepare($sql);
         $query->setFetchMode(PDO::FETCH_CLASS, ProductsEntity::class);
-        $query->execute();
+        $query->execute(["id"=>$id]);
         return $query->fetch();
     }
 }
