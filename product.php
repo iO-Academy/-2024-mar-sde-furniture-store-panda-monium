@@ -1,7 +1,12 @@
 <?php
+require_once 'src/Services/ProductsDisplayService.php';
+require_once 'src/Models/ProductModel.php';
+require_once 'src/Factory/furnitureDatabaseConnector.php';
+require_once 'src/Entities/ProductsEntity.php';
+
+$db = furnitureDatabaseConnector::connect();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,14 +30,7 @@
 </div>
 
 <section class="container mx-auto md:w-2/3 border p-8 mt-5">
-    <div class="flex justify-between items-start">
-        <h1 class="text-5xl">Yellow - £27.62</h1>
-        <span class="bg-teal-500 px-2 rounded">Stock: 3</span>
-    </div>
-    <h2 class="text-3xl mt-3">Dimensions</h2>
-    <p class="mt-2">Width: 2073mm</p>
-    <p class="mt-3">Height: 1201mm</p>
-    <p class="mt-3">Depth: 915mm</p>
+   <?php // TODO Echo product display ?>
 </section>
 
 <section class="container mx-auto md:w-2/3 border p-8 mt-10">

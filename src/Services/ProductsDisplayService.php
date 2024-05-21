@@ -14,5 +14,16 @@ class ProductsDisplayService
     </div>
   ';
     }
+public static function displayIndividualProduct(ProductsEntity $product): string
+{
+    return '<div class="flex justify-between items-start" >
+<h1 class="text-5xl" >' . $product->getColor() . '-' .  $product->getPrice() . '</h1 >
+<span class="bg-teal-500 px-2 rounded" > Stock: ' . $product->getStock() . '</span >
+</div >
+<h2 class="text-3xl mt-3" > Dimensions</h2 >
+<p class="mt-2" > Width: ' . $product->getWidth() . '</p >
+<p class="mt-3" > Height: ' .  $product->getHeight() . '</p>
+<p class="mt-3" > Depth: ' . $product->getDepth() . '</p>';
+}
 }
 
