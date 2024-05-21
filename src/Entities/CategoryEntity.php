@@ -13,5 +13,4 @@ class CategoryEntity
     {
         return $this->stockTotal;
     }
-
 }
