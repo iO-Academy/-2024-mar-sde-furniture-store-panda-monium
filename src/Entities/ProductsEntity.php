@@ -1,13 +1,10 @@
 <?php
-
 class ProductsEntity
-
 {
     private string $name;
     private float $price;
     private int $stock;
     private string $color;
-
     public function getPrice(): float
     {
         return $this->price;

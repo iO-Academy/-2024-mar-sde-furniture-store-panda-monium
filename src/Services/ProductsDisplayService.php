@@ -1,5 +1,4 @@
 <?php
-
 class ProductsDisplayService
 {
     public static function displayProducts(ProductsEntity $productEntity): string

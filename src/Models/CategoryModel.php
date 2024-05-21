@@ -1,7 +1,6 @@
 <?php
 
 require_once 'src/Entities/CategoryEntity.php';
-
 class CategoryModel
 {
     public static function getCategories(PDO $db): array
@@ -16,7 +15,7 @@ class CategoryModel
         $query->execute();
         return $query->fetchAll();
     }
-    public static function getCategoryTitle($db, $id)
+    public static function getCategoryTitle(PDO $db, int $id): ProductsEntity
     {
         $sql = 'SELECT `categories`.`name` FROM `categories` JOIN `products`
         ON `products`.`category_id` = `categories`.`id` WHERE `category_id` = :id;';

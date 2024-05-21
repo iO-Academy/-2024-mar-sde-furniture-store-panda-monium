@@ -1,23 +1,17 @@
 <?php
-
 class CategoryEntity
 {
     private string $name;
     private int $stockTotal;
     private int $id;
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
-
-    public function getStockTotal()
+    public function getStockTotal(): int
     {
         return $this->stockTotal;
     }
 
-    public function getId()
-    {
-        return $this->id;
-    }
 }
