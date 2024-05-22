@@ -5,10 +5,10 @@ require_once '../src/Entities/ProductEntity.php';
 
 use PHPUnit\Framework\TestCase;
 
-class TestProductDisplayService extends TestCase
+class TestProductsDisplayService extends TestCase
 {
 
-    public function testDisplayProducts_Success() {
+    public function testDisplayProduct_Success() {
         $productsMock = $this->createMock(ProductEntity::class);
         $productsMock->method('getPrice')->willReturn(430.69);
         $productsMock->method('getColor')->willReturn('Red');
@@ -27,7 +27,7 @@ class TestProductDisplayService extends TestCase
         $this->assertSame($result, $expectedResult);
     }
 
-    public function testDisplayProducts_Malformed()
+    public function testDisplayProduct_Malformed()
     {
         $this->expectException(TypeError::class);
         ProductsDisplayService::displayProduct('dave');

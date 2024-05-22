@@ -17,18 +17,13 @@ class CategoryModel
         return $query->fetchAll();
     }
 
-    public static function getCategoryById(PDO $db, int $id): CategoryEntity | null
+    public static function getCategoryById(PDO $db, int $id): CategoryEntity | false
     {
         $sql = 'SELECT `categories`.`name` FROM `categories`  WHERE `id` = :id;';
         $query = $db->prepare($sql);
         $query->setFetchMode(PDO::FETCH_CLASS, CategoryEntity::class);
         $query->execute(["id"=>$id]);
-        $queryResult = $query->fetch();
-        if ($queryResult) {
-            return $queryResult;
-        } else {
-            return null;
-        }
+        return $query->fetch();
     }
 }
 
