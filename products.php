@@ -7,14 +7,14 @@ require_once 'src/Entities/ProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
 $products = [];
-$category = null;
+$category = false;
 
 if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET["id"];
     $category = CategoryModel::getCategoryById($db, $id);
 }
 
-if (!is_null($category)) {
+if ($category) {
     $products = ProductModel::getProductsByCategoryId($db, $id);
 }
 ?>
@@ -32,7 +32,7 @@ if (!is_null($category)) {
         </nav>
         <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
             <?php
-            if (!is_null($category)) {
+            if ($category) {
                 echo '<h1 class="text-5xl mb-2">Category: ' . $category->getName() . '</h1>
                 <p>For more information about any of the below products, click on the more button.</p>';
             } else {

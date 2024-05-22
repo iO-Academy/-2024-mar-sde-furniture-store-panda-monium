@@ -24,7 +24,7 @@ class ProductEntity
         return $this->price;
     }
 
-    public function getStock() : int
+    public function getStock(): int
     {
         return $this->stock;
     }
