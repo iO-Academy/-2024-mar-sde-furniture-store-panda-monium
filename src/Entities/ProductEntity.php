@@ -6,7 +6,7 @@ class ProductEntity
     private float $price;
 
     private int $stock;
-    
+
     private string $color;
 
     private int $width;
