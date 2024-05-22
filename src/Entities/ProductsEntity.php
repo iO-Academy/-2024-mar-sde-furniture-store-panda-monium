@@ -1,6 +1,7 @@
 <?php
 class ProductsEntity
 {
+    private int $id;
     private string $name;
     private float $price;
     private int $stock;
@@ -9,6 +10,11 @@ class ProductsEntity
     private int $height;
     private int $depth;
     private int $related;
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     public function getPrice(): float
     {
