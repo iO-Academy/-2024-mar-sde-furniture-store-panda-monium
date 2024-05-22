@@ -50,7 +50,7 @@ class ProductEntity
     {
         return $this->depth;
     }
-    public function getRelated(): string
+    public function getRelated(): int
     {
         return $this->related;
     }
