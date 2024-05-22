@@ -10,6 +10,8 @@ class ProductsEntity
     private int $depth;
     private int $related;
 
+    private int $id;
+
     public function getPrice(): float
     {
         return $this->price;
@@ -41,5 +43,10 @@ class ProductsEntity
     public function getRelated(): string
     {
         return $this->related;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 }

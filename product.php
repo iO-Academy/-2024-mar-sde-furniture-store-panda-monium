@@ -5,6 +5,7 @@ require_once 'src/Factory/furnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductsEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
+$product = ProductModel::getIndividaulProduct($db, $id);
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ $db = furnitureDatabaseConnector::connect();
 </div>
 
 <section class="container mx-auto md:w-2/3 border p-8 mt-5">
-   <?php // TODO Echo product display ?>
+   <?php echo ProductsDisplayService::displayIndividualProduct($product) ?>
 </section>
 
 <section class="container mx-auto md:w-2/3 border p-8 mt-10">
