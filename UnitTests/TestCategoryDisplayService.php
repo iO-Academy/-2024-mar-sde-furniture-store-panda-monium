@@ -4,7 +4,9 @@ require_once '../src/Services/CategoryDisplayService.php';
 require_once '../src/Entities/CategoryEntity.php';
 
 use PHPUnit\Framework\TestCase;
+
 class TestCategoryDisplayService extends TestCase
+
 {
     public function testDisplayCategory_Success() {
         $categoryMock = $this->createMock(CategoryEntity::class);
@@ -17,6 +19,7 @@ class TestCategoryDisplayService extends TestCase
                     </div>';
         $this->assertSame($result, $expectedResult);
     }
+
     public function testDisplayCategory_Malformed()
     {
         $this->expectException(TypeError::class);

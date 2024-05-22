@@ -1,29 +1,39 @@
 <?php
-class ProductsEntity
+class ProductEntity
 {
     private string $name;
-    private float $price;
-    private int $stock;
-    private string $color;
-    private int $width;
-    private int $height;
-    private int $depth;
-    private int $related;
 
+    private float $price;
+
+    private int $stock;
+    
+    private string $color;
+
+    private int $width;
+    
+    private int $height;
+    
+    private int $depth;
+    
+    private int $related;
+    
     private int $id;
 
     public function getPrice(): float
     {
         return $this->price;
     }
+
     public function getStock() : int
     {
         return $this->stock;
     }
+
     public function getColor(): string
     {
         return $this->color;
     }
+
     public function getName(): string
     {
         return $this->name;
