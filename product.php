@@ -2,10 +2,18 @@
 require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
 require_once 'src/Factory/furnitureDatabaseConnector.php';
-require_once 'src/Entities/ProductsEntity.php';
+require_once 'src/Entities/ProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
-$product = ProductModel::getIndividaulProduct($db, $id);
+$error_template = '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
+$product = [];
+
+if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET["id"];
+    $product = ProductModel::getIndividualProduct($db, $id);
+} else {
+    $product = null;
+}
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +30,13 @@ $product = ProductModel::getIndividaulProduct($db, $id);
 </nav>
 
 <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
-    <p>If this is not the right product for you, use the back button below to see our wide selection of other products.</p>
+    <?php
+    if (!is_null($product)) {
+    echo '<p>If this is not the right product for you, use the back button below to see our wide selection of other products.</p>';
+    } else {
+    echo $error_template;
+    }
+    ?>
 </header>
 
 
