@@ -6,18 +6,17 @@ require_once 'src/Factory/furnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
-$error_template = '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
 $products = [];
 $category = null;
 
 if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET["id"];
-    $products = ProductModel::getProductsByCategoryId($db, $id);
+    $category = CategoryModel::getCategoryById($db, $id);
 }
 
-if (!empty($products)) {
-        $category = CategoryModel::getCategoryTitle($db, $id);
-    }
+if (!is_null($category)) {
+    $products = ProductModel::getProductsByCategoryId($db, $id);
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +36,7 @@ if (!empty($products)) {
                 echo '<h1 class="text-5xl mb-2">Category: ' . $category->getName() . '</h1>
                 <p>For more information about any of the below products, click on the more button.</p>';
             } else {
-                    echo $error_template;
+                echo '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';;
             }
             ?>
         </header>
@@ -47,7 +46,7 @@ if (!empty($products)) {
         <section class="container mx-auto md:w-2/3 grid md:grid-cols-4 gap-5 mt-5">
             <?php
                 foreach ($products as $product) {
-                    echo ProductsDisplayService::displayProducts($product);
+                    echo ProductsDisplayService::displayProduct($product);
                 }
             ?>
         </section>

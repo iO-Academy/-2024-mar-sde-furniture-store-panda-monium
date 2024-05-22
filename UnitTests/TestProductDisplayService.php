@@ -14,7 +14,7 @@ class TestProductDisplayService extends TestCase
         $productsMock->method('getColor')->willReturn('Red');
         $productsMock->method('getStock')->willReturn(69);
 
-        $result = ProductsDisplayService::displayProducts($productsMock);
+        $result = ProductsDisplayService::displayProduct($productsMock);
         $expectedResult = '
     <div class="bg-slate-100 p-5">
         <div class="flex justify-between items-center">
@@ -30,6 +30,6 @@ class TestProductDisplayService extends TestCase
     public function testDisplayProducts_Malformed()
     {
         $this->expectException(TypeError::class);
-        ProductsDisplayService::displayProducts('dave');
+        ProductsDisplayService::displayProduct('dave');
     }
 }
