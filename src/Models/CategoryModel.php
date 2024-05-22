@@ -16,12 +16,12 @@ class CategoryModel
         $query->execute();
         return $query->fetchAll();
     }
-    public static function getCategoryTitle(PDO $db, int $id): ProductsEntity
+
+    public static function getCategoryTitle(PDO $db, int $id): CategoryEntity
     {
-        $sql = 'SELECT `categories`.`name` FROM `categories` JOIN `products`
-        ON `products`.`category_id` = `categories`.`id` WHERE `category_id` = :id;';
+        $sql = 'SELECT `categories`.`name` FROM `categories`  WHERE `id` = :id;';
         $query = $db->prepare($sql);
-        $query->setFetchMode(PDO::FETCH_CLASS, ProductsEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, CategoryEntity::class);
         $query->execute(["id"=>$id]);
         return $query->fetch();
     }

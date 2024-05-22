@@ -1,4 +1,5 @@
 <?php
+
 class CategoryDisplayService
 {
     public static function displayCategory(CategoryEntity $categoryEntity): string
