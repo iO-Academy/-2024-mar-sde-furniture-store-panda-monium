@@ -1,9 +1,9 @@
 <?php
 
 require_once 'src/Entities/CategoryEntity.php';
+
 class CategoryModel
 {
-
     public static function getCategories(PDO $db): array
     {
         $sql = 'SELECT `categories`.`id`, `categories`.`name`, SUM(`products`.`stock`) AS "stockTotal"
