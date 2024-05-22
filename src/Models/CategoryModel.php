@@ -1,6 +1,7 @@
 <?php
 
 require_once 'src/Entities/CategoryEntity.php';
+
 class CategoryModel
 {
     public static function getCategories(PDO $db): array
