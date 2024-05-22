@@ -11,7 +11,7 @@ class ProductModel
         return $query->fetchAll();
     }
 
-    public static function getIndividualProduct(PDO $db, int $product_id): ProductEntity
+    public static function getIndividualProduct(PDO $db, int $product_id): ProductEntity | false
     {
         $sql = 'SELECT `price`, `color`, `stock`, `width`, `height`, `depth`, `related`, `id` FROM `products` WHERE `id` = :product_id;';
         $query = $db->prepare($sql);

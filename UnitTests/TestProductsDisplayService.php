@@ -13,6 +13,7 @@ class TestProductsDisplayService extends TestCase
         $productsMock->method('getPrice')->willReturn(430.69);
         $productsMock->method('getColor')->willReturn('Red');
         $productsMock->method('getStock')->willReturn(69);
+        $productsMock->method('getId')->willReturn(6);
 
         $result = ProductsDisplayService::displayProduct($productsMock);
         $expectedResult = '
@@ -22,7 +23,7 @@ class TestProductsDisplayService extends TestCase
             <span class="bg-teal-500 text-2xl px-2 py-1 rounded">69</span>
         </div>
         <p>Color: Red</p>
-        <a href="product.php" class="inline-block bg-blue-600 px-3 py-2 rounded text-white mt-1">More >></a>
+        <a href="product.php?id=6" class="inline-block bg-blue-600 px-3 py-2 rounded text-white mt-1">More >></a>
     </div>
   ';
         $this->assertSame($result, $expectedResult);
@@ -32,5 +33,35 @@ class TestProductsDisplayService extends TestCase
     {
         $this->expectException(TypeError::class);
         ProductsDisplayService::displayProduct('dave');
+    }
+
+    public function testDisplaySimilarProduct()
+    {
+        $similarProductMock = $this->createMock(ProductEntity::class);
+        $similarProductMock->method('getPrice')->willReturn(430.69);
+        $similarProductMock->method('getColor')->willReturn('Red');
+        $similarProductMock->method('getStock')->willReturn(69);
+        $similarProductMock->method('getId')->willReturn(6);
+
+        $result = ProductsDisplayService::displaySimilarProduct($similarProductMock);
+        $expectedResult =
+            '<section class="container mx-auto md:w-2/3 border p-8 mt-10">
+            <h1 class="text-3xl border-b pb-3 mb-3">Similar Product</h1>
+            <div class="flex justify-between items-start">
+                <p class="text-2xl">£430.69</p>
+                <span class="bg-teal-500 px-2 rounded">Stock: 69</span>
+            </div>
+            <div class="flex justify-between items-start">
+                <p>Color: Red</p>
+                <a href="product.php?id=6" class="inline-block bg-blue-600 px-3 py-2 rounded text-white mt-1">More >></a>
+            </div>
+            </section>';
+        $this->assertSame($result, $expectedResult);
+    }
+
+    public function testDisplaySimilarProduct_Malformed()
+    {
+        $this->expectException(TypeError::class);
+        ProductsDisplayService::displaySimilarProduct('dave');
     }
 }

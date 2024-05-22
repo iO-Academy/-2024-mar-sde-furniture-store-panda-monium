@@ -5,11 +5,16 @@ require_once 'src/Factory/furnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
-$error_template = '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
-$id = $_GET['id'];
-$product = ProductModel::getIndividualProduct($db, $id);
-$related_id = $product->getRelated();
-$similarProduct = ProductModel::getSimilarProduct($db, $related_id);
+$product = [];
+
+if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET["id"];
+    $product = ProductModel::getIndividualProduct($db, $id);
+}
+if ($product) {
+    $related_id = $product->getRelated();
+    $similarProduct = ProductModel::getSimilarProduct($db, $related_id);
+}
 
 ?>
 <!DOCTYPE html>
@@ -30,11 +35,17 @@ $similarProduct = ProductModel::getSimilarProduct($db, $related_id);
     <a href="index.php" class="text-blue-500">Back</a>
 </div>
 <section class="container mx-auto md:w-2/3 border p-8 mt-5">
-   <?php echo ProductsDisplayService::displayIndividualProduct($product) ?>
+   <?php
+        if ($product) {
+            echo ProductsDisplayService::displayIndividualProduct($product);
+        } else {
+            echo '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
+        }
+   ?>
 </section>
 
     <?php
-    if ($similarProduct) {
+    if ($product) {
         echo ProductsDisplayService::displaySimilarProduct($similarProduct);
     }
     ?>
