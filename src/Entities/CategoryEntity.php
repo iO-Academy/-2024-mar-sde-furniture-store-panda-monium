@@ -1,4 +1,5 @@
 <?php
+
 class CategoryEntity
 {
     private string $name;
@@ -9,10 +10,12 @@ class CategoryEntity
     {
         return $this->name;
     }
+
     public function getStockTotal(): int
     {
         return $this->stockTotal;
     }
+
     public function getId(): int
     {
       return $this->id;

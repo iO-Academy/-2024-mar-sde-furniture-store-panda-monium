@@ -19,6 +19,7 @@ class TestCategoryDisplayService extends TestCase
                     </div>';
         $this->assertSame($result, $expectedResult);
     }
+
     public function testDisplayCategory_Malformed()
     {
         $this->expectException(TypeError::class);

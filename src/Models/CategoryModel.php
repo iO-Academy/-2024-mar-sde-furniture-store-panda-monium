@@ -3,6 +3,7 @@
 require_once 'src/Entities/CategoryEntity.php';
 class CategoryModel
 {
+
     public static function getCategories(PDO $db): array
     {
         $sql = 'SELECT `categories`.`id`, `categories`.`name`, SUM(`products`.`stock`) AS "stockTotal"
@@ -15,6 +16,7 @@ class CategoryModel
         $query->execute();
         return $query->fetchAll();
     }
+
     public static function getCategoryTitle(PDO $db, int $id): CategoryEntity
     {
         $sql = 'SELECT `categories`.`name` FROM `categories`  WHERE `id` = :id;';

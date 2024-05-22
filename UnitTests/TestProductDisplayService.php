@@ -1,13 +1,15 @@
 <?php
 
 require_once '../src/Services/ProductsDisplayService.php';
-require_once '../src/Entities/ProductsEntity.php';
+require_once '../src/Entities/ProductEntity.php';
 
 use PHPUnit\Framework\TestCase;
+
 class TestProductDisplayService extends TestCase
 {
+
     public function testDisplayProducts_Success() {
-        $productsMock = $this->createMock(ProductsEntity::class);
+        $productsMock = $this->createMock(ProductEntity::class);
         $productsMock->method('getPrice')->willReturn(430.69);
         $productsMock->method('getColor')->willReturn('Red');
         $productsMock->method('getStock')->willReturn(69);
@@ -24,6 +26,7 @@ class TestProductDisplayService extends TestCase
   ';
         $this->assertSame($result, $expectedResult);
     }
+
     public function testDisplayProducts_Malformed()
     {
         $this->expectException(TypeError::class);

@@ -3,7 +3,7 @@ require_once 'src/Models/CategoryModel.php';
 require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
 require_once 'src/Factory/furnitureDatabaseConnector.php';
-require_once 'src/Entities/ProductsEntity.php';
+require_once 'src/Entities/ProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
 $id = $_GET["id"];
@@ -25,7 +25,7 @@ $products = "";
             <?php
 
             if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
-                $products = ProductModel::getProducts($db, $id);
+                $products = ProductModel::getProductsByCategoryId($db, $id);
 
                 if ($products === []) {
                     echo '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>
