@@ -1,7 +1,7 @@
 <?php
 class ProductsDisplayService
 {
-    public static function displayProducts(ProductEntity $productEntity): string
+    public static function displayProduct(ProductEntity $productEntity): string
     {
         return '
     <div class="bg-slate-100 p-5">
