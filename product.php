@@ -1,11 +1,11 @@
 <?php
 require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
-require_once 'src/Factory/furnitureDatabaseConnector.php';
+require_once 'src/Factory/FurnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
-$product = [];
+$product = false;
 $similarProduct = false;
 
 if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
@@ -31,7 +31,7 @@ if ($product) {
         </nav>
         <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
             <?php
-            if ($product){
+            if ($product) {
                 echo '<p>If this is not the right product for you, use the back button below to see our wide selection of other products.</p>';
             } else {
                 echo '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
@@ -39,7 +39,7 @@ if ($product) {
             ?>
         </header>
             <div class="container mx-auto md:w-2/3 mt-5">
-                <a href="index.php" class="text-blue-500">Back</a>
+                <a href="products.php?id=<?php echo $product->getCategory() ?>" class="text-blue-500">Back</a>
             </div>
            <?php
                 if ($product) {

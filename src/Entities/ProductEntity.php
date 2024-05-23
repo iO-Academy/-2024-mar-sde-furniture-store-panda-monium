@@ -18,9 +18,11 @@ class ProductEntity
     
     private int $id;
 
+    private int $category_id;
+
     public function getPrice(): float
     {
-        return $this->price;
+        return number_format($this->price, 2);
     }
 
     public function getStock(): int
@@ -56,5 +58,9 @@ class ProductEntity
     public function getId(): int
     {
         return $this->id;
+    }
+    public function getCategory(): int
+    {
+        return $this->category_id;
     }
 }
