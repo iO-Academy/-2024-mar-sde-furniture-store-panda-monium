@@ -22,11 +22,11 @@ if (!empty($_GET['units'])) {
     $units = $_GET['units'];
 }
 
-if ($units === 'mm' || $units === 'cm' || $units === 'in' || $units === 'ft') {
-    echo 'success';
+if ($units === 'cm') {
+    $product->calculateCM();
 }
 echo '<br>';
-var_dump($units);
+var_dump($product);
 
 
 

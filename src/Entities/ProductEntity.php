@@ -18,6 +18,12 @@ class ProductEntity
     
     private int $id;
 
+    private int $calculatedWidth;
+
+    private int $calculatedHeight;
+
+    private int $calculatedDepth;
+
     public function getPrice(): float
     {
         return $this->price;
@@ -56,5 +62,12 @@ class ProductEntity
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function calculateCM()
+    {
+        $this->calculatedWidth = $this->width * 10;
+        $this->calculatedHeight = $this->height * 10;
+        $this->calculatedDepth = $this->depth *10;
     }
 }
