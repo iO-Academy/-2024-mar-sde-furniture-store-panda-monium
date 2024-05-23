@@ -90,4 +90,6 @@ class TestProductsDisplayService extends TestCase
         $this->expectException(TypeError::class);
         ProductsDisplayService::displaySimilarProduct('dave');
     }
+
+
 }
