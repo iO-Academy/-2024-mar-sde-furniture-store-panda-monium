@@ -5,7 +5,7 @@ require_once 'src/Factory/furnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
-$product = [];
+$product = false;
 $similarProduct = false;
 
 if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
@@ -22,13 +22,11 @@ if (!empty($_GET['units'])) {
     $units = $_GET['units'];
 }
 
-if ($units === 'cm') {
-    $product->calculateCM();
-}
 echo '<br>';
 var_dump($product);
 
-
+$cmQuery = ['id' => $product->getId(), 'units' => 'cm'];
+var_dump(http_build_query($cmQuery));
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +40,7 @@ var_dump($product);
         <nav class="bg-slate-800 py-2 px-5 flex justify-between items-center">
             <span class="text-4xl text-white">Furniture Store</span>
 
-            <form class="text-yellow-300 border border-yellow-300 rounded">
+           <form class="text-yellow-300 border border-yellow-300 rounded">
                 <button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="mm">mm</button><!--
             --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="cm">cm</button><!--
             --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="in">in</button><!--

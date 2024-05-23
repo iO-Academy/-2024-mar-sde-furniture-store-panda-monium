@@ -64,10 +64,18 @@ class ProductEntity
         return $this->id;
     }
 
-    public function calculateCM()
+    public function getCalculatedWidth(): int
     {
-        $this->calculatedWidth = $this->width * 10;
-        $this->calculatedHeight = $this->height * 10;
-        $this->calculatedDepth = $this->depth *10;
+        return $this->calculatedWidth = $this->width / 10;
+    }
+
+    public function getCalculatedHeight(): int
+    {
+        return  $this->calculatedHeight = $this->height / 10;
+    }
+
+    public function getCalculatedDepth(): int
+    {
+        return $this->calculatedDepth = $this->depth / 10;
     }
 }
