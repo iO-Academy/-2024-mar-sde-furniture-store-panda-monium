@@ -17,6 +17,19 @@ if ($product) {
     $similarProduct = ProductModel::getSimilarProduct($db, $related_id);
 }
 
+$units = "";
+if (!empty($_GET['units'])) {
+    $units = $_GET['units'];
+}
+
+if ($units === 'mm' || $units === 'cm' || $units === 'in' || $units === 'ft') {
+    echo 'success';
+}
+echo '<br>';
+var_dump($units);
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +39,15 @@ if ($product) {
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body>
-        <nav class="bg-slate-800 py-2 px-5">
+        <nav class="bg-slate-800 py-2 px-5 flex justify-between items-center">
             <span class="text-4xl text-white">Furniture Store</span>
+
+            <form class="text-yellow-300 border border-yellow-300 rounded">
+                <button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="mm">mm</button><!--
+            --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="cm">cm</button><!--
+            --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="in">in</button><!--
+            --><button class="px-1 py-1 hover:bg-yellow-300 hover:text-slate-800" name="units" value="ft">ft</button>
+            </form>
         </nav>
         <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
             <?php
