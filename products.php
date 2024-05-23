@@ -5,7 +5,7 @@ require_once 'src/Models/ProductModel.php';
 require_once 'src/Factory/FurnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
 
-$db = furnitureDatabaseConnector::connect();
+$db = FurnitureDatabaseConnector::connect();
 $products = [];
 $category = false;
 

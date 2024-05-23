@@ -4,7 +4,7 @@ require_once 'src/Models/CategoryModel.php';
 require_once 'src/Factory/FurnitureDatabaseConnector.php';
 require_once 'src/Entities/CategoryEntity.php';
 
-$db = furnitureDatabaseConnector::connect();
+$db = FurnitureDatabaseConnector::connect();
 $categories = CategoryModel::getCategories($db);
 
 ?>
