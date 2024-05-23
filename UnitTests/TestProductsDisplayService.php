@@ -2,6 +2,7 @@
 
 require_once '../src/Services/ProductsDisplayService.php';
 require_once '../src/Entities/ProductEntity.php';
+require_once '../src/Entities/IndividualProductEntity.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -34,7 +35,7 @@ class TestProductsDisplayService extends TestCase
     }
 
     public function testDisplayIndividualProduct_Success() {
-        $individualProductsMock = $this->createMock(ProductEntity::class);
+        $individualProductsMock = $this->createMock(IndividualProductEntity::class);
         $individualProductsMock->method('getPrice')->willReturn(430.69);
         $individualProductsMock->method('getColor')->willReturn('Red');
         $individualProductsMock->method('getStock')->willReturn(69);
