@@ -6,6 +6,7 @@ require_once 'src/Entities/ProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
 $product = [];
+$similarProduct = false;
 
 if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET["id"];
@@ -29,30 +30,28 @@ if ($product) {
     <span class="text-4xl text-white">Furniture Store</span>
 </nav>
 <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
-    <p>If this is not the right product for you, use the back button below to see our wide selection of other products.</p>
+    <?php
+    if ($product){
+        echo '<p>If this is not the right product for you, use the back button below to see our wide selection of other products.</p>';
+    } else {
+        echo '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
+    }
+    ?>
 </header>
 <div class="container mx-auto md:w-2/3 mt-5">
     <a href="index.php" class="text-blue-500">Back</a>
 </div>
-<section class="container mx-auto md:w-2/3 border p-8 mt-5">
    <?php
         if ($product) {
             echo ProductsDisplayService::displayIndividualProduct($product);
-        } else {
-            echo '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
         }
-   ?>
-</section>
 
-    <?php
-    if ($product) {
-        echo ProductsDisplayService::displaySimilarProduct($similarProduct);
-    }
+        if ($similarProduct) {
+            echo ProductsDisplayService::displaySimilarProduct($similarProduct);
+        }
     ?>
-
 <footer class="container mx-auto md:w-2/3 border-t mt-10 pt-5">
     <p>© Copyright iO Academy 2022</p>
 </footer>
-
 </body>
 </html>

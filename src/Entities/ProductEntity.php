@@ -38,15 +38,15 @@ class ProductEntity
     {
         return $this->name;
     }
-    public function getWidth(): string
+    public function getWidth(): int
     {
         return $this->width;
     }
-    public function getHeight(): string
+    public function getHeight(): int
     {
         return $this->height;
     }
-    public function getDepth(): string
+    public function getDepth(): int
     {
         return $this->depth;
     }
