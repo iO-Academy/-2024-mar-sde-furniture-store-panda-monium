@@ -8,6 +8,7 @@ require_once 'src/Services/MeasurementCalculationService.php';
 $db = furnitureDatabaseConnector::connect();
 $product = false;
 $similarProduct = false;
+$break = true;
 
 if (!empty($_GET['id']) && is_numeric($_GET['id'])) {
     $id = $_GET["id"];
@@ -18,11 +19,17 @@ if ($product) {
     $similarProduct = ProductModel::getSimilarProduct($db, $related_id);
 }
 
-$units = "";
+$units = "mm";
 if (!empty($_GET['units'])) {
     $units = $_GET['units'];
-    MeasurementCalculationService::displayMeasurementBtn($product, $units);
 }
+
+if ($units === "mm" || $units === "cm" || $units === "in" || $units === "ft") {
+    MeasurementCalculationService::displayMeasurementBtn($product, $units);
+} else {
+    $break = false;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +51,7 @@ if (!empty($_GET['units'])) {
         </nav>
         <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
             <?php
-            if ($product){
+            if ($product && $break){
                 echo '<p>If this is not the right product for you, use the back button below to see our wide selection of other products.</p>';
             } else {
                 echo '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
@@ -55,7 +62,7 @@ if (!empty($_GET['units'])) {
                 <a href="index.php" class="text-blue-500">Back</a>
             </div>
            <?php
-                if ($product) {
+                if ($product && $break) {
                     echo ProductsDisplayService::displayIndividualProduct($product, $units);
                 }
 
