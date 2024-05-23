@@ -2,23 +2,13 @@
 
 class ProductEntity
 {
-    private float $price;
+    protected float $price;
 
-    private int $stock;
+    protected int $stock;
 
-    private string $color;
-
-    private int $width;
+    protected string $color;
     
-    private int $height;
-    
-    private int $depth;
-    
-    private int $related;
-    
-    private int $id;
-
-    private int $category_id;
+    protected int $id;
 
     public function getPrice(): float
     {
@@ -35,32 +25,8 @@ class ProductEntity
         return $this->color;
     }
 
-    public function getWidth(): int
-    {
-        return $this->width;
-    }
-
-    public function getHeight(): int
-    {
-        return $this->height;
-    }
-
-    public function getDepth(): int
-    {
-        return $this->depth;
-    }
-
-    public function getRelated(): int
-    {
-        return $this->related;
-    }
-
     public function getId(): int
     {
         return $this->id;
-    }
-    public function getCategory(): int
-    {
-        return $this->category_id;
     }
 }

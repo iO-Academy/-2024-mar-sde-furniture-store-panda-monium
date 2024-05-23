@@ -11,11 +11,11 @@ class ProductModel
         return $query->fetchAll();
     }
 
-    public static function getIndividualProduct(PDO $db, int $product_id): ProductEntity | false
+    public static function getIndividualProduct(PDO $db, int $product_id): IndividualProductEntity | false
     {
         $sql = 'SELECT `price`, `color`, `stock`, `width`, `height`, `depth`, `related`, `id`, `category_id` FROM `products` WHERE `id` = :product_id;';
         $query = $db->prepare($sql);
-        $query->setFetchMode(PDO::FETCH_CLASS, ProductEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, IndividualProductEntity::class);
         $query->execute(['product_id' => $product_id]);
         return $query->fetch();
     }

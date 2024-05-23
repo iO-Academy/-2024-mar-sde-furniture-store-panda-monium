@@ -3,6 +3,7 @@ require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
 require_once 'src/Factory/FurnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
+require_once 'src/Entities/IndividualProductEntity.php';
 
 $db = furnitureDatabaseConnector::connect();
 $product = false;
