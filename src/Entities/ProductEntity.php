@@ -1,8 +1,7 @@
 <?php
+
 class ProductEntity
 {
-    private string $name;
-
     private float $price;
 
     private int $stock;
@@ -34,22 +33,21 @@ class ProductEntity
         return $this->color;
     }
 
-    public function getName(): string
-    {
-        return $this->name;
-    }
     public function getWidth(): int
     {
         return $this->width;
     }
+
     public function getHeight(): int
     {
         return $this->height;
     }
+
     public function getDepth(): int
     {
         return $this->depth;
     }
+
     public function getRelated(): int
     {
         return $this->related;

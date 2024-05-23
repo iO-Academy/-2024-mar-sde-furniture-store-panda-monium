@@ -1,4 +1,5 @@
 <?php
+
 class ProductsDisplayService
 {
     public static function displayProduct(ProductEntity $productEntity): string
@@ -12,8 +13,9 @@ class ProductsDisplayService
                     <a href="product.php?id=' . $productEntity->getId() . '" class="inline-block bg-blue-600 px-3 py-2 rounded text-white mt-1">More >></a>
                 </div>';
     }
-public static function displayIndividualProduct(ProductEntity $product): string
-{
+
+    public static function displayIndividualProduct(ProductEntity $product): string
+    {
         return '<section class="container mx-auto md:w-2/3 border p-8 mt-5">
                     <div class="flex justify-between items-start" >
                         <h1 class="text-5xl" >' . $product->getColor() . ' - £' . number_format($product->getPrice(), 2) . '</h1 >
@@ -24,10 +26,10 @@ public static function displayIndividualProduct(ProductEntity $product): string
                     <p class="mt-3" > Height: ' .  $product->getHeight() . 'mm</p>
                     <p class="mt-3" > Depth: ' . $product->getDepth() . 'mm</p>
                 </section>';
-}
+    }
 
-public static function displaySimilarProduct(ProductEntity $similarProduct): string
-{
+    public static function displaySimilarProduct(ProductEntity $similarProduct): string
+    {
         return '<section class="container mx-auto md:w-2/3 border p-8 mt-10">
                     <h1 class="text-3xl border-b pb-3 mb-3">Similar Product</h1>
                     <div class="flex justify-between items-start">
@@ -39,7 +41,7 @@ public static function displaySimilarProduct(ProductEntity $similarProduct): str
                         <a href="product.php?id=' . $similarProduct->getId() . '" class="inline-block bg-blue-600 px-3 py-2 rounded text-white mt-1">More >></a>
                     </div>
                 </section>';
-}
+    }
 
 }
 
