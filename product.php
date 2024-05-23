@@ -24,12 +24,6 @@ if (!empty($_GET['units'])) {
     MeasurementDisplayService::displayMeasurementBtn($product, $units);
 }
 
-//echo '<br>';
-//var_dump($product);
-//
-//$cmQuery = ['id' => $product->getId(), 'units' => 'cm'];
-//var_dump(http_build_query($cmQuery));
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,12 +36,12 @@ if (!empty($_GET['units'])) {
         <nav class="bg-slate-800 py-2 px-5 flex justify-between items-center">
             <span class="text-4xl text-white">Furniture Store</span>
 
-           <form class="text-yellow-300 border border-yellow-300 rounded">
-                <button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="mm">mm</button><!--
-            --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="cm">cm</button><!--
-            --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="in">in</button><!--
-            --><button class="px-1 py-1 hover:bg-yellow-300 hover:text-slate-800" name="units" value="ft">ft</button>
-            </form>
+           <div class="text-yellow-300 border border-yellow-300 rounded">
+                <a href="product.php?id=<?php echo $product->getId() . '&units=mm'?>" class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" >mm</a><!--
+            --><a href="product.php?id=<?php echo $product->getId() . '&units=cm'?>" class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" >cm</a><!--
+            --><a href="product.php?id=<?php echo $product->getId() . '&units=in'?>" class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" >in</a><!--
+            --><a href="product.php?id=<?php echo $product->getId() . '&units=ft'?>" class="px-1 py-1 hover:bg-yellow-300 hover:text-slate-800" >ft</a>
+            </div>
         </nav>
         <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
             <?php
