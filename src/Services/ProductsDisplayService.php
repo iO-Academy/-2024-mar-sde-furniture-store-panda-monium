@@ -14,7 +14,7 @@ class ProductsDisplayService
                 </div>';
     }
 
-    public static function displayIndividualProduct(ProductEntity $product): string
+    public static function displayIndividualProduct(ProductEntity $product, string $units): string
     {
         if (isset($_GET["units"])) {
             return '<section class="container mx-auto md:w-2/3 border p-8 mt-5">
@@ -23,9 +23,9 @@ class ProductsDisplayService
                         <span class="bg-teal-500 px-2 rounded" > Stock: ' . $product->getStock() . '</span >
                     </div >
                     <h2 class="text-3xl mt-3" > Dimensions</h2 >
-                    <p class="mt-2" > Width: ' . $product->getCalculatedWidth() . 'mm</p >
-                    <p class="mt-3" > Height: ' .  $product->getCalculatedHeight() . 'mm</p>
-                    <p class="mt-3" > Depth: ' . $product->getCalculatedDepth() . 'mm</p>
+                    <p class="mt-2" > Width: ' . $product->calculatedWidth . $units . '</p >
+                    <p class="mt-3" > Height: ' .  $product->calculatedHeight . $units .'</p>
+                    <p class="mt-3" > Depth: ' . $product->calculatedDepth .  $units .'</p>
                 </section>';
         } else {
             return '<section class="container mx-auto md:w-2/3 border p-8 mt-5">

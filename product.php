@@ -3,6 +3,7 @@ require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
 require_once 'src/Factory/furnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
+require_once 'src/Services/MeasurementDisplayService.php';
 
 $db = furnitureDatabaseConnector::connect();
 $product = false;
@@ -20,13 +21,14 @@ if ($product) {
 $units = "";
 if (!empty($_GET['units'])) {
     $units = $_GET['units'];
+    MeasurementDisplayService::displayMeasurementBtn($product, $units);
 }
 
-echo '<br>';
-var_dump($product);
-
-$cmQuery = ['id' => $product->getId(), 'units' => 'cm'];
-var_dump(http_build_query($cmQuery));
+//echo '<br>';
+//var_dump($product);
+//
+//$cmQuery = ['id' => $product->getId(), 'units' => 'cm'];
+//var_dump(http_build_query($cmQuery));
 
 ?>
 <!DOCTYPE html>
@@ -61,7 +63,7 @@ var_dump(http_build_query($cmQuery));
             </div>
            <?php
                 if ($product) {
-                    echo ProductsDisplayService::displayIndividualProduct($product);
+                    echo ProductsDisplayService::displayIndividualProduct($product, $units);
                 }
 
                 if ($similarProduct) {
