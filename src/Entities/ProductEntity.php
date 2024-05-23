@@ -64,8 +64,6 @@ class ProductEntity
         return $this->id;
     }
 
-
-
     public function setCalculatedWidth($width)
     {
         $this->calculatedWidth = $width;

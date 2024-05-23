@@ -3,7 +3,7 @@ require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
 require_once 'src/Factory/furnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
-require_once 'src/Services/MeasurementDisplayService.php';
+require_once 'src/Services/MeasurementCalculationService.php';
 
 $db = furnitureDatabaseConnector::connect();
 $product = false;
@@ -21,9 +21,8 @@ if ($product) {
 $units = "";
 if (!empty($_GET['units'])) {
     $units = $_GET['units'];
-    MeasurementDisplayService::displayMeasurementBtn($product, $units);
+    MeasurementCalculationService::displayMeasurementBtn($product, $units);
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

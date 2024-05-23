@@ -1,8 +1,8 @@
 <?php
 
-class MeasurementDisplayService
+class MeasurementCalculationService
 {
-    public static function displayMeasurementBtn(ProductEntity $product, string $unit)
+    public static function displayMeasurementBtn(ProductEntity $product, string $unit): void
     {
 
      $width = $product->getWidth();
