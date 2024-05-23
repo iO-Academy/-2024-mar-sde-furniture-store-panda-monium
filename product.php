@@ -1,9 +1,11 @@
 <?php
 require_once 'src/Services/ProductsDisplayService.php';
 require_once 'src/Models/ProductModel.php';
-require_once 'src/Factory/furnitureDatabaseConnector.php';
+require_once 'src/Factory/FurnitureDatabaseConnector.php';
 require_once 'src/Entities/ProductEntity.php';
 require_once 'src/Services/MeasurementCalculationService.php';
+require_once 'src/Entities/IndividualProductEntity.php';
+
 
 $db = furnitureDatabaseConnector::connect();
 $product = false;
@@ -59,7 +61,7 @@ if ($units === "mm" || $units === "cm" || $units === "in" || $units === "ft") {
             ?>
         </header>
             <div class="container mx-auto md:w-2/3 mt-5">
-                <a href="index.php" class="text-blue-500">Back</a>
+                <a href="products.php?id=<?php echo $product->getCategory() ?>" class="text-blue-500">Back</a>
             </div>
            <?php
                 if ($product && $break) {
