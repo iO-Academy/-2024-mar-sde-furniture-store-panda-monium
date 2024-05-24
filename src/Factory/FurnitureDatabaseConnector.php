@@ -1,6 +1,6 @@
 <?php
 
-class furnitureDatabaseConnector
+class FurnitureDatabaseConnector
 {
     public static function connect(): PDO
     {

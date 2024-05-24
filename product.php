@@ -6,8 +6,7 @@ require_once 'src/Entities/ProductEntity.php';
 require_once 'src/Services/MeasurementCalculationService.php';
 require_once 'src/Entities/IndividualProductEntity.php';
 
-
-$db = furnitureDatabaseConnector::connect();
+$db = FurnitureDatabaseConnector::connect();
 $product = false;
 $similarProduct = false;
 $break = true;
