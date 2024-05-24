@@ -1,14 +1,18 @@
 <?php
+
 class ProductEntity
 {
-    private string $name;
-    private float $price;
-    private int $stock;
-    private string $color;
+    protected float $price;
+
+    protected int $stock;
+
+    protected string $color;
+    
+    protected int $id;
 
     public function getPrice(): float
     {
-        return $this->price;
+        return number_format($this->price, 2);
     }
 
     public function getStock(): int
@@ -21,8 +25,8 @@ class ProductEntity
         return $this->color;
     }
 
-    public function getName(): string
+    public function getId(): int
     {
-        return $this->name;
+        return $this->id;
     }
 }
