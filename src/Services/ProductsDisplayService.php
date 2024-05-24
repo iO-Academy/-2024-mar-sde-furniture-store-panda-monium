@@ -14,17 +14,17 @@ class ProductsDisplayService
                 </div>';
     }
 
-    public static function displayIndividualProduct(ProductEntity $product): string
+    public static function displayIndividualProduct(IndividualProductEntity $product, string $unitOfMeasurement): string
     {
-        return '<section class="container mx-auto md:w-2/3 border p-8 mt-5">
+            return '<section class="container mx-auto md:w-2/3 border p-8 mt-5">
                     <div class="flex justify-between items-start" >
                         <h1 class="text-5xl" >' . $product->getColor() . ' - £' . $product->getPrice() . '</h1 >
                         <span class="bg-teal-500 px-2 rounded" > Stock: ' . $product->getStock() . '</span >
                     </div >
                     <h2 class="text-3xl mt-3" > Dimensions</h2 >
-                    <p class="mt-2" > Width: ' . $product->getWidth() . 'mm</p >
-                    <p class="mt-3" > Height: ' .  $product->getHeight() . 'mm</p>
-                    <p class="mt-3" > Depth: ' . $product->getDepth() . 'mm</p>
+                    <p class="mt-2" > Width: ' . $product->getWidth($unitOfMeasurement) . '</p >
+                    <p class="mt-3" > Height: ' . $product->getHeight($unitOfMeasurement) . '</p>
+                    <p class="mt-3" > Depth: ' . $product->getDepth($unitOfMeasurement) . '</p>
                 </section>';
     }
 
@@ -42,6 +42,5 @@ class ProductsDisplayService
                     </div>
                 </section>';
     }
-
 }
 
