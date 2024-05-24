@@ -10,11 +10,6 @@ class ProductEntity
     
     protected int $id;
 
-    public string $calculatedWidth;
-
-    public string $calculatedHeight;
-
-    public string $calculatedDepth;
 
     public function getPrice(): float
     {
@@ -34,20 +29,5 @@ class ProductEntity
     public function getId(): int
     {
         return $this->id;
-    }
-
-    public function setCalculatedWidth($width)
-    {
-        $this->calculatedWidth = $width;
-    }
-
-    public function setCalculatedHeight($height)
-    {
-        $this->calculatedHeight = $height;
-    }
-
-    public function setCalculatedDepth($depth)
-    {
-        $this->calculatedDepth = $depth;
     }
 }

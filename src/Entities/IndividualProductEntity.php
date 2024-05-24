@@ -1,5 +1,7 @@
 <?php
 
+require_once 'src/Services/MeasurementCalculationService.php';
+
 class IndividualProductEntity extends ProductEntity
 {
     private int $width;
@@ -12,19 +14,22 @@ class IndividualProductEntity extends ProductEntity
 
     private int $category_id;
 
-    public function getWidth(): int
+    public function getWidth(string $unitOfMeasurement): string
     {
-        return $this->width;
+        $convertedWidth = MeasurementCalculationService::calculateDimension($this->width, $unitOfMeasurement);
+        return $convertedWidth;
     }
 
-    public function getHeight(): int
+    public function getHeight(string $unitOfMeasurement): string
     {
-        return $this->height;
+        $convertedHeight = MeasurementCalculationService::calculateDimension($this->height, $unitOfMeasurement);
+        return $convertedHeight;
     }
 
-    public function getDepth(): int
+    public function getDepth(string $unitOfMeasurement): string
     {
-        return $this->depth;
+        $convertedDepth = MeasurementCalculationService::calculateDimension($this->depth, $unitOfMeasurement);
+        return $convertedDepth;
     }
 
     public function getRelated(): int

@@ -20,15 +20,13 @@ if ($product) {
     $similarProduct = ProductModel::getSimilarProduct($db, $related_id);
 }
 
-$units = "mm";
-if (!empty($_GET['units'])) {
-    $units = $_GET['units'];
-}
-
-if ($units === "mm" || $units === "cm" || $units === "in" || $units === "ft") {
-    MeasurementCalculationService::displayMeasurementBtn($product, $units);
-} else {
-    $break = false;
+$unitOfMeasurement = MeasurementCalculationService::MM;
+if (!empty($_GET['units']) && (
+        $_GET['units'] === MeasurementCalculationService::CM
+        || $_GET['units'] === MeasurementCalculationService::IN
+        || $_GET['units'] === MeasurementCalculationService::FT
+    )) {
+    $unitOfMeasurement = $_GET['units'];
 }
 
 ?>
@@ -52,7 +50,7 @@ if ($units === "mm" || $units === "cm" || $units === "in" || $units === "ft") {
         </nav>
         <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
             <?php
-            if ($product && $break){
+            if ($product){
                 echo '<p>If this is not the right product for you, use the back button below to see our wide selection of other products.</p>';
             } else {
                 echo '<h1 class="text-5xl mb-2"> Oops, something went wrong </h1>';
@@ -63,8 +61,8 @@ if ($units === "mm" || $units === "cm" || $units === "in" || $units === "ft") {
                 <a href="products.php?id=<?php echo $product->getCategory() ?>" class="text-blue-500">Back</a>
             </div>
            <?php
-                if ($product && $break) {
-                    echo ProductsDisplayService::displayIndividualProduct($product, $units);
+                if ($product) {
+                    echo ProductsDisplayService::displayIndividualProduct($product, $unitOfMeasurement);
                 }
 
                 if ($similarProduct) {

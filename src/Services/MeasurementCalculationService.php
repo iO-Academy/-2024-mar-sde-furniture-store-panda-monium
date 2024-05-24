@@ -2,30 +2,26 @@
 
 class MeasurementCalculationService
 {
-    public static function displayMeasurementBtn(ProductEntity $product, string $unit): void
+    public const MM = 'mm';
+    public const CM = 'cm';
+    public const IN = 'in';
+    public const FT = 'ft';
+
+    public static function calculateDimension(int $dimension, string $unitOfMeasurement): string
     {
+        $unitConvert = 0;
 
-     $width = $product->getWidth();
-     $height = $product->getHeight();
-     $depth = $product->getDepth();
-     $unitConvert = 0;
-
-     if ($unit === 'cm') {
+     if ($unitOfMeasurement === 'cm') {
          $unitConvert = 10;
-     } else if ($unit === 'in') {
+     } else if ($unitOfMeasurement === 'in') {
          $unitConvert = 25.4;
-     } else if ($unit === 'ft'){
+     } else if ($unitOfMeasurement === 'ft'){
          $unitConvert = 304.8;
      } else {
          $unitConvert = 1;
      }
-        $width = number_format($width / $unitConvert, 2);
-        $height = number_format($height / $unitConvert, 2);
-        $depth = number_format($depth / $unitConvert, 2);
 
-        $product->setCalculatedWidth($width);
-        $product->setCalculatedHeight($height);
-        $product->setCalculatedDepth($depth);
-
+     $dimension = number_format($dimension / $unitConvert, 2);
+     return $dimension;
     }
 }
