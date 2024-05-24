@@ -16,19 +16,19 @@ class IndividualProductEntity extends ProductEntity
 
     public function getWidth(string $unitOfMeasurement): string
     {
-        $convertedWidth = MeasurementCalculationService::calculateDimension($this->width, $unitOfMeasurement);
+        $convertedWidth = MeasurementCalculationService::convertUnit($this->width, $unitOfMeasurement);
         return $convertedWidth;
     }
 
     public function getHeight(string $unitOfMeasurement): string
     {
-        $convertedHeight = MeasurementCalculationService::calculateDimension($this->height, $unitOfMeasurement);
+        $convertedHeight = MeasurementCalculationService::convertUnit($this->height, $unitOfMeasurement);
         return $convertedHeight;
     }
 
     public function getDepth(string $unitOfMeasurement): string
     {
-        $convertedDepth = MeasurementCalculationService::calculateDimension($this->depth, $unitOfMeasurement);
+        $convertedDepth = MeasurementCalculationService::convertUnit($this->depth, $unitOfMeasurement);
         return $convertedDepth;
     }
 

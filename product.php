@@ -21,11 +21,7 @@ if ($product) {
 }
 
 $unitOfMeasurement = MeasurementCalculationService::MM;
-if (!empty($_GET['units']) && (
-        $_GET['units'] === MeasurementCalculationService::CM
-        || $_GET['units'] === MeasurementCalculationService::IN
-        || $_GET['units'] === MeasurementCalculationService::FT
-    )) {
+if (!empty($_GET['units']) && array_key_exists($_GET['units'], MeasurementCalculationService::UNITS)) {
     $unitOfMeasurement = $_GET['units'];
 }
 

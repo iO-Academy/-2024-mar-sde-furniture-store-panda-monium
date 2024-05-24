@@ -1,6 +1,7 @@
 <?php
 
 require_once '../src/Services/ProductsDisplayService.php';
+require_once '../src/Services/MeasurementCalculationService.php';
 require_once '../src/Entities/ProductEntity.php';
 require_once '../src/Entities/IndividualProductEntity.php';
 
@@ -43,7 +44,7 @@ class TestProductsDisplayService extends TestCase
         $individualProductsMock->method('getHeight')->willReturn(2);
         $individualProductsMock->method('getDepth')->willReturn(3);
 
-        $result = ProductsDisplayService::displayIndividualProduct($individualProductsMock);
+        $result = ProductsDisplayService::displayIndividualProduct($individualProductsMock, "mm");
         $expectedResult =  '<section class="container mx-auto md:w-2/3 border p-8 mt-5">
                     <div class="flex justify-between items-start" >
                         <h1 class="text-5xl" >Red - £430.69</h1 >
@@ -91,6 +92,4 @@ class TestProductsDisplayService extends TestCase
         $this->expectException(TypeError::class);
         ProductsDisplayService::displaySimilarProduct('dave');
     }
-
-
 }

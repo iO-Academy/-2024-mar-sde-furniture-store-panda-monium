@@ -22,9 +22,9 @@ class ProductsDisplayService
                         <span class="bg-teal-500 px-2 rounded" > Stock: ' . $product->getStock() . '</span >
                     </div >
                     <h2 class="text-3xl mt-3" > Dimensions</h2 >
-                    <p class="mt-2" > Width: ' . $product->getWidth($unitOfMeasurement) . $unitOfMeasurement . '</p >
-                    <p class="mt-3" > Height: ' . $product->getHeight($unitOfMeasurement) . $unitOfMeasurement . '</p>
-                    <p class="mt-3" > Depth: ' . $product->getDepth($unitOfMeasurement) . $unitOfMeasurement . '</p>
+                    <p class="mt-2" > Width: ' . $product->getWidth($unitOfMeasurement) . '</p >
+                    <p class="mt-3" > Height: ' . $product->getHeight($unitOfMeasurement) . '</p>
+                    <p class="mt-3" > Depth: ' . $product->getDepth($unitOfMeasurement) . '</p>
                 </section>';
     }
 
