@@ -14,7 +14,7 @@ class ProductsDisplayService
                 </div>';
     }
 
-    public static function displayIndividualProduct(ProductEntity $product, string $unitOfMeasurement): string
+    public static function displayIndividualProduct(IndividualProductEntity $product, string $unitOfMeasurement): string
     {
             return '<section class="container mx-auto md:w-2/3 border p-8 mt-5">
                     <div class="flex justify-between items-start" >

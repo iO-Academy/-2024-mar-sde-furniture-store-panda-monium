@@ -20,12 +20,12 @@ $categories = CategoryModel::getCategories($db);
         <nav class="bg-slate-800 py-2 px-5 flex justify-between items-center">
             <span class="text-4xl text-white">Furniture Store</span>
 
-            <form class="text-yellow-300 border border-yellow-300 rounded">
-                <button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="mm">mm</button><!--
-            --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="cm">cm</button><!--
-            --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" name="units" value="in">in</button><!--
-            --><button class="px-1 py-1 hover:bg-yellow-300 hover:text-slate-800" name="units" value="ft">ft</button>
-            </form>
+            <div class="text-yellow-300 border border-yellow-300 rounded">
+                <button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" >mm</button><!--
+            --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" >cm</button><!--
+            --><button class="border-r border-yellow-300 hover:bg-yellow-300 hover:text-slate-800 px-1 py-1" >in</button><!--
+            --><button class="px-1 py-1 hover:bg-yellow-300 hover:text-slate-800" >ft</button>
+            </div>
         </nav>
         <header class="container mx-auto md:w-2/3 md:mt-10 py-16 px-8 bg-slate-200 rounded">
             <h1 class="text-5xl">Furniture Categories</h1>

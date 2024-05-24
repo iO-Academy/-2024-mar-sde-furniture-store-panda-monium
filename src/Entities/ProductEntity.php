@@ -11,7 +11,7 @@ class ProductEntity
     protected int $id;
 
 
-    public function getPrice(): float
+    public function getPrice(): string
     {
         return number_format($this->price, 2);
     }

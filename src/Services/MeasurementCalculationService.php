@@ -9,6 +9,10 @@ class MeasurementCalculationService
 
     public static function calculateDimension(int $dimension, string $unitOfMeasurement): string
     {
+        if ($dimension < 0) {
+            throw new Exception('Dimension must be greater than 0');
+        }
+
         $unitConvert = 0;
 
      if ($unitOfMeasurement === 'cm') {
